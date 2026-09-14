@@ -56,6 +56,11 @@ docs/                    company rules - read before publishing
 `CLAUDE.md` and `.claude/skills/` are set up so Claude reads the tokens and the
 component inventory before writing UI. Useful commands:
 
+- `/setup-project name="..." tagline="..." owner="Name <email>" url="https://..."` —
+  do the entire "Making it yours" checklist below in one go: fills in
+  `site.config.ts`, sets the deployed URL, applies brand tokens if given,
+  deletes the example page, and rewrites the homepage. Run this first, right
+  after `npm install`, instead of hand-editing the files.
 - `/new-page <slug> <what it explains>` — scaffolds a page from existing components
 
 If Claude builds a component that duplicates something in `kitchen-sink.astro`,
