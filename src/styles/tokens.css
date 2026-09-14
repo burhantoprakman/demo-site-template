@@ -1,0 +1,51 @@
+/* GENERATED FILE - do not edit by hand.
+   Edit src/design/tokens.json, then run `npm run tokens`. */
+
+:root {
+  /* color */
+  --color-ink: #16202B;
+  --color-ink-muted: #5A6773;
+  --color-paper: #FCFCFB;
+  --color-paper-sunk: #F3F2EF;
+  --color-rule: #E2E0DC;
+  --color-accent: #2F6E6B;
+  --color-accent-soft: #E6EFEE;
+  --color-signal: #B8873A;
+
+  /* font */
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, monospace;
+
+  /* size */
+  --size-xs: 0.8rem;
+  --size-sm: 0.9rem;
+  --size-base: 1rem;
+  --size-md: 1.25rem;
+  --size-lg: 1.563rem;
+  --size-xl: 1.953rem;
+  --size-2xl: 2.441rem;
+  --size-3xl: 3.052rem;
+
+  /* space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* radius */
+  --radius-none: 0;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  /* layout */
+  --layout-measure: 68ch;
+  --layout-content: 46rem;
+  --layout-wide: 72rem;
+
+}

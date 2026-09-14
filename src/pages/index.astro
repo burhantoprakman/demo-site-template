@@ -1,0 +1,53 @@
+---
+// DELETE-ME-START
+// Everything between these markers is example content. Replace it with your
+// own before publishing. If this text is still live, the site is not finished.
+// DELETE-ME-END
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Steps from '../components/Steps.astro';
+import Callout from '../components/Callout.astro';
+import CallToAction from '../components/CallToAction.astro';
+---
+
+<BaseLayout
+  title="Demo Site Template"
+  description="A starting point for internal explainer and demo sites."
+>
+  <Hero
+    headline="Build an explainer site without rebuilding the basics"
+    standfirst="Fork this repo, replace the tokens with your brand, write your pages with the components that already exist. The rules and the design system come with it."
+  >
+    <CallToAction label="See the components" href="/kitchen-sink/" />
+  </Hero>
+
+  <Section title="What you get">
+    <p>
+      A working site, a small set of components covering what explainer pages
+      actually need, one file of design tokens to swap, and the company rules
+      written where both you and Claude Code will read them.
+    </p>
+  </Section>
+
+  <Section title="Getting from fork to published" sunk>
+    <Steps
+      steps={[
+        { title: 'Fork and install', body: 'Use this repo as a template, clone it, run npm install and npm run dev. Nothing else should be needed.' },
+        { title: 'Swap the tokens', body: 'Edit src/design/tokens.json with your brand values and run npm run tokens.' },
+        { title: 'Fill in site.config.ts', body: 'Name, tagline, owner, navigation. Four fields.' },
+        { title: 'Write your pages', body: 'Start from src/pages/example.astro. Use existing components before writing new CSS.' },
+        { title: 'Delete the examples', body: 'Remove every DELETE-ME block and the example page, then check that npm run build passes.' },
+      ]}
+    />
+  </Section>
+
+  <Section title="Before you share the link">
+    <Callout tone="warning" title="Read the content rules first">
+      <p>
+        Internal demo sites still carry the company name. Check
+        <code>docs/content-rules.md</code> for what cannot go on one.
+      </p>
+    </Callout>
+  </Section>
+</BaseLayout>

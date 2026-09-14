@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Tokens are in sync
+        run: |
+          npm run tokens
+          git diff --exit-code src/styles/tokens.css \
+            || (echo "::error::tokens.css is stale. Run 'npm run tokens' and commit the result." && exit 1)
+
+      - name: Type and template check
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: No placeholder content left
+        run: |
+          if grep -rn "DELETE-ME" src/ >/dev/null 2>&1; then
+            echo "::warning::Example content is still present. Remove DELETE-ME blocks before sharing this site."
+          fi
+          if grep -rn "TODO(owner)" docs/ >/dev/null 2>&1; then
+            echo "::warning::docs/ still contains TODO(owner) placeholders."
+          fi

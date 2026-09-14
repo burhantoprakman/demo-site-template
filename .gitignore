@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.local
+.env.*.local
+
+# Claude Code - personal overrides, never committed
+.claude/settings.local.json
+
+.DS_Store
+.idea/

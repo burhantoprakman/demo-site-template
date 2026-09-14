@@ -1,0 +1,7 @@
+# Changes to the shared rules and design system need the template owner's
+# review. Everything else is fair game for whoever forked it.
+
+/docs/                      @your-github-handle
+/src/design/tokens.json     @your-github-handle
+/.claude/                   @your-github-handle
+/src/components/            @your-github-handle

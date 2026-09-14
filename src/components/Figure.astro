@@ -1,0 +1,27 @@
+---
+interface Props {
+  /** Explains what the reader should take from the image or diagram. */
+  caption: string;
+}
+const { caption } = Astro.props;
+---
+<figure>
+  <div class="frame"><slot /></div>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  figure { margin: var(--space-8) 0; }
+  .frame {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    background: var(--color-paper);
+  }
+  figcaption {
+    color: var(--color-ink-muted);
+    font-size: var(--size-sm);
+    padding-top: var(--space-3);
+    max-width: var(--layout-measure);
+  }
+</style>

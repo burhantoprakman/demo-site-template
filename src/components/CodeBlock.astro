@@ -1,0 +1,39 @@
+---
+interface Props {
+  /** Language label shown above the block, e.g. 'bash', 'ts'. */
+  lang?: string;
+  /** Optional filename, shown instead of the language when present. */
+  file?: string;
+}
+const { lang, file } = Astro.props;
+const label = file ?? lang;
+---
+<figure class="block">
+  {label && <figcaption>{label}</figcaption>}
+  <pre><code><slot /></code></pre>
+</figure>
+
+<style>
+  .block {
+    margin: var(--space-6) 0;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  figcaption {
+    background: var(--color-paper-sunk);
+    border-bottom: 1px solid var(--color-rule);
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--size-xs);
+    color: var(--color-ink-muted);
+  }
+  pre {
+    margin: 0;
+    padding: var(--space-4);
+    overflow-x: auto;
+    font-size: var(--size-sm);
+    line-height: 1.55;
+  }
+  code { background: none; padding: 0; font-size: inherit; }
+</style>

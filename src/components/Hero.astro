@@ -1,0 +1,32 @@
+---
+interface Props {
+  /** The single sentence a reader should leave with. */
+  headline: string;
+  /** Two or three sentences of context. Optional. */
+  standfirst?: string;
+}
+const { headline, standfirst } = Astro.props;
+---
+<div class="hero">
+  <h1>{headline}</h1>
+  {standfirst && <p class="standfirst">{standfirst}</p>}
+  <slot />
+</div>
+
+<style>
+  .hero {
+    max-width: var(--layout-wide);
+    margin: 0 auto;
+    padding: var(--space-24) var(--space-4) var(--space-16);
+  }
+  h1 { font-size: var(--size-3xl); max-width: 20ch; }
+  .standfirst {
+    font-size: var(--size-md);
+    color: var(--color-ink-muted);
+    max-width: 50ch;
+  }
+  @media (max-width: 40rem) {
+    .hero { padding-top: var(--space-12); }
+    h1 { font-size: var(--size-2xl); }
+  }
+</style>

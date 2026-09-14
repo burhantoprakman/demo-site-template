@@ -1,0 +1,17 @@
+---
+import { site } from '../site.config';
+---
+<footer>
+  <div class="inner">
+    <p>
+      Internal demo site. Not a product, and not an official statement of company
+      capability. Questions: <a href={`mailto:${site.owner.email}`}>{site.owner.name}</a>.
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer { border-top: 1px solid var(--color-rule); margin-top: var(--space-24); }
+  .inner { max-width: var(--layout-wide); margin: 0 auto; padding: var(--space-8) var(--space-4); }
+  p { color: var(--color-ink-muted); font-size: var(--size-sm); margin: 0; }
+</style>

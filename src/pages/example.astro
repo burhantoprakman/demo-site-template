@@ -1,0 +1,62 @@
+---
+// DELETE-ME-START
+// A worked example page. Copy its shape, then delete this file.
+// DELETE-ME-END
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Callout from '../components/Callout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import Figure from '../components/Figure.astro';
+---
+
+<BaseLayout
+  title="Example explainer - Demo Site Template"
+  description="Shows how a typical explainer page is put together."
+>
+  <Hero
+    headline="How a page on this site is put together"
+    standfirst="Every page is a BaseLayout, a Hero, and a stack of Sections. The components handle spacing and width, so pages stay consistent without anyone measuring anything."
+  />
+
+  <Section title="The structure">
+    <p>
+      A page imports the layout and the components it needs, then composes them.
+      There is no page-level CSS in a well-formed page on this site.
+    </p>
+    <CodeBlock file="src/pages/your-page.astro">
+{`---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+---
+<BaseLayout title="..." description="...">
+  <Section title="Background">
+    <p>Your text.</p>
+  </Section>
+</BaseLayout>`}
+    </CodeBlock>
+  </Section>
+
+  <Section title="Comparing things" width="wide">
+    <ComparisonTable
+      caption="When to use each section width"
+      columns={['Width', 'Use for', 'Max width']}
+      rows={[
+        ['content', 'Running text, the default', '46rem'],
+        ['wide', 'Tables, diagrams, side-by-side layouts', '72rem'],
+      ]}
+    />
+  </Section>
+
+  <Section title="Showing things">
+    <Figure caption="Figures take any content. Use them for diagrams and screenshots so captions stay consistent.">
+      <p style="text-align:center; color: var(--color-ink-muted); margin: 0;">
+        Your diagram or screenshot goes here
+      </p>
+    </Figure>
+    <Callout title="One note per point">
+      <p>Callouts are for things a reader would otherwise miss. Two in a row means neither is doing its job.</p>
+    </Callout>
+  </Section>
+</BaseLayout>

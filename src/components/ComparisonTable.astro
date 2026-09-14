@@ -1,0 +1,46 @@
+---
+interface Props {
+  /** Column headers. First one labels the row, the rest are the things compared. */
+  columns: string[];
+  /** One array per row, same length as `columns`. */
+  rows: string[][];
+  /** Describes the table for screen readers and appears above it. */
+  caption: string;
+}
+const { columns, rows, caption } = Astro.props;
+---
+<div class="scroll">
+  <table>
+    <caption>{caption}</caption>
+    <thead>
+      <tr>{columns.map((c) => <th scope="col">{c}</th>)}</tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          {row.map((cell, i) =>
+            i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>
+          )}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .scroll { overflow-x: auto; margin-block: var(--space-6); }
+  table { border-collapse: collapse; width: 100%; font-size: var(--size-sm); }
+  caption {
+    text-align: left;
+    color: var(--color-ink-muted);
+    padding-bottom: var(--space-3);
+  }
+  th, td {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+  thead th { background: var(--color-paper-sunk); font-weight: 600; white-space: nowrap; }
+  tbody th { font-weight: 600; }
+</style>

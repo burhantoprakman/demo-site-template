@@ -1,0 +1,25 @@
+---
+interface Props {
+  /** Section heading. Omit only for a continuation of the section above. */
+  title?: string;
+  /** 'content' for running text, 'wide' for tables and diagrams. */
+  width?: 'content' | 'wide';
+  /** Tints the background to separate this section from its neighbours. */
+  sunk?: boolean;
+}
+const { title, width = 'content', sunk = false } = Astro.props;
+---
+<section class:list={['section', { sunk }]}>
+  <div class:list={['inner', width]}>
+    {title && <h2>{title}</h2>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section { padding-block: var(--space-16); }
+  .section.sunk { background: var(--color-paper-sunk); }
+  .inner { margin: 0 auto; padding-inline: var(--space-4); }
+  .inner.content { max-width: var(--layout-content); }
+  .inner.wide { max-width: var(--layout-wide); }
+</style>

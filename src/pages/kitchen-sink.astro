@@ -1,0 +1,103 @@
+---
+// Keep this page. It is how anyone (including Claude) checks what already
+// exists before building something new. Add a case here whenever you add a
+// component or a variant.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Hero from '../components/Hero.astro';
+import Callout from '../components/Callout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import Figure from '../components/Figure.astro';
+import Steps from '../components/Steps.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+import tokens from '../design/tokens.json';
+const colors = Object.entries(tokens.color).filter(([k]) => !k.startsWith('$'));
+---
+
+<BaseLayout
+  title="Components - Demo Site Template"
+  description="Every component and token in the design system, on one page."
+>
+  <Hero
+    headline="Components"
+    standfirst="Everything available on this site. Check here before building anything new."
+  />
+
+  <Section title="Colour" width="wide">
+    <ul class="swatches">
+      {colors.map(([name, token]) => (
+        <li>
+          <span class="chip" style={`background:${(token as any).value}`}></span>
+          <code>--color-{name}</code>
+          <span class="use">{(token as any).use}</span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section title="Type">
+    <h1>Heading one</h1>
+    <h2>Heading two</h2>
+    <h3>Heading three</h3>
+    <p>
+      Body text sits on a measure of 68 characters or less, because longer lines
+      are harder to track back from. Inline <code>code</code> and
+      <a href="#">links</a> look like this.
+    </p>
+  </Section>
+
+  <Section title="Callout" sunk>
+    <Callout title="Note">
+      <p>The default tone. Use for asides that support the main text.</p>
+    </Callout>
+    <Callout tone="warning" title="Warning">
+      <p>For caveats a reader must not miss. Use sparingly or it stops working.</p>
+    </Callout>
+  </Section>
+
+  <Section title="Code">
+    <CodeBlock lang="bash">npm install && npm run dev</CodeBlock>
+  </Section>
+
+  <Section title="Table" width="wide">
+    <ComparisonTable
+      caption="Example comparison"
+      columns={['Option', 'Good for', 'Trade-off']}
+      rows={[
+        ['First', 'Simple cases', 'Limited'],
+        ['Second', 'Complex cases', 'More setup'],
+      ]}
+    />
+  </Section>
+
+  <Section title="Figure">
+    <Figure caption="A caption explains what to take from the figure.">
+      <p style="text-align:center;margin:0;color:var(--color-ink-muted)">Placeholder</p>
+    </Figure>
+  </Section>
+
+  <Section title="Steps">
+    <Steps
+      steps={[
+        { title: 'First', body: 'Only use steps when the content is genuinely a sequence.' },
+        { title: 'Second', body: 'Otherwise a plain list is clearer.' },
+      ]}
+    />
+  </Section>
+
+  <Section title="Buttons">
+    <p>
+      <CallToAction label="Primary action" href="#" />
+      <CallToAction label="Secondary action" href="#" variant="secondary" />
+    </p>
+  </Section>
+</BaseLayout>
+
+<style>
+  .swatches { list-style: none; padding: 0; max-width: none; display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+  .swatches li { display: grid; grid-template-columns: var(--space-8) 1fr; grid-template-rows: auto auto; gap: var(--space-1) var(--space-3); align-items: center; }
+  .chip { grid-row: span 2; width: var(--space-8); height: var(--space-8); border-radius: var(--radius-sm); border: 1px solid var(--color-rule); }
+  .use { font-size: var(--size-xs); color: var(--color-ink-muted); }
+</style>
